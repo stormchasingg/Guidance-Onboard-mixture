@@ -8,6 +8,7 @@
 3 windows-PC (e.g. win10), DJI-Asistant-2 (仿真), Guidance 调参软件  
 4 DJI GO App  
 ## 1 Guidance-SDK 嵌入到 Onboard-SDK (OSDK)
+不包含 ros  
 在开发者网站上注册一个账号 https://developer.dji.com  
 登录后，进入右上角 Developer Center, 申请一个 app  
 ```Bash
@@ -54,3 +55,4 @@ Guidance 头文件对应的 cpp 文件）
 target_link_libraries(${PROJECT_NAME} djiosdk-core libDJI_guidance.so)
 ```
 重新编译 OSDK  
+## 2 Guidance-sdk-demo 嵌入到 Onboard-sdk-ros
