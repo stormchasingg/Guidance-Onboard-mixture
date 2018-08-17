@@ -1,7 +1,7 @@
 # Guidance-Onboard-mixture (unfinished)
 这份文档的内容需要硬件支持  
-功能：将 Guidance-SDK 嵌入到 Onboard-SDK, Guidance-SDK-demo 嵌入到 Onboard-SDK-ros  
-(备选功能：将 Onboard-SDK 嵌入到 Guidance-SDK, Onboard-SDK-ros 嵌入到 Guidance-SDK-ros-demo)  
+功能：将 Guidance-SDK 嵌入到 Onboard-SDK, Guidance-SDK-ROS-demo 嵌入到 Onboard-SDK-ROS  
+(备选功能：将 Onboard-SDK 嵌入到 Guidance-SDK, Onboard-SDK-ROS 嵌入到 Guidance-SDK-ROS-demo)  
 ## 硬件和环境准备
 1 DJI M100, Guidance (避障系统)  
 2 manifold (tk1), ubuntu-tegra (v14.04), ros-indigo (opencv-2.4.8), cmake(>=2.8)  
@@ -55,16 +55,16 @@ Guidance 头文件对应的 cpp 文件）
 target_link_libraries(${PROJECT_NAME} djiosdk-core libDJI_guidance.so)
 ```
 重新编译 OSDK  
-## 2 Guidance-SDK-demo 嵌入到 Onboard-SDK-ros
+## 2 Guidance-SDK-demo 嵌入到 Onboard-SDK-ROS
 前提：已经建好了 catkin_ws  
-## 编译 Onboard-SDK-ros
+## 编译 Onboard-SDK-ROS
 同样将 App ID, Key 和串口 "ttyTHS1" 填入到 sdk.launch  
 路径: ~/catkin_ws/src/Onboard-SDK-ROS/dji_sdk/launch/sdk.launch  
 ```Bash
 cd catkin_ws
 catkin_make
 ```
-## 编译 Guidance-SDK-ros
+## 编译 Guidance-SDK-ROS
 略
 ## 嵌入
 未完
