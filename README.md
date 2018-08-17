@@ -16,10 +16,11 @@ SDK: Onboard SDK | APP Name: 随意 | Category: 自己选 | Description: 随意
 获得 APP ID 和 APP Key  
 
 连接 win10, M100, manifold, Guidance, 遥控器, 安卓手机  
-打开 DJI-Asistant-2 (win10), DJI GO App (手机), 联网更新固件  
+打开 DJI-Asistant-2 (win10), DJI GO App (手机), Guidance 调参软件, 联网更新固件  
 ubuntu: 下载 Onboard SDK 3.4 https://github.com/dji-sdk/Onboard-SDK/releases  
 ubuntu: 下载 Guidance SDK https://github.com/dji-sdk/Guidance-SDK  
 win10: 在 DJI-Asistant-2 中打开 API 控制, 确认波特率为 230400  
+win10: 在 Guidance 调参软件中打开 USB 和 UART, 不标定, 直接使用 SDK 中的双目相机内外参数    
 ## 编译 Onboard-SDK 
 ```Bash
 cd OSDK-3.4
@@ -35,3 +36,21 @@ cd bin
 ./djiosdk-flightcontrol-sample ../../sample/linux/common/UserConfig.txt
 ```
 按 A 或 B 键 启动例程  
+## 编译 Guidance-SDK
+略  
+## 嵌入
+将 Guidance-SDK 复制到 Onboard-SDK 的 flight-control 中  
+改写 flight-control 中的 main.cpp:  
+```Bash
+# 伪代码
+#include "Guidance 头文件"
+```
+改写 flight-control中的 CMakeLists.txt:  
+```Bash
+# 伪代码
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -pthread -g -fno-stack-protector -O0")
+add_executable(${PROJECT_NAME} ${SOURCE_FILES} # 删除原来的
+Guidance 头文件对应的 cpp 文件）
+target_link_libraries(${PROJECT_NAME} djiosdk-core libDJI_guidance.so)
+```
+重新编译 OSDK  
