@@ -30,7 +30,7 @@ cmake..
 make # 编译所有例子
 cd bin
 ```
-将 App ID, Key 和串口 "ttyTHS1" 填入到 UserConfig.txt  
+将 App ID, Key 和串口 "ttyTHS1" (对应 manifold 中的 uart 2) 填入到 UserConfig.txt  
 路径：~/Onboard-SDK/sample/linux/common/UserConfig.txt  
 遥控器拨到 F 档  
 ```Bash
