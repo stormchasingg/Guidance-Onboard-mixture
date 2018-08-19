@@ -67,4 +67,17 @@ catkin_make
 ## 编译 Guidance-SDK-ROS-demo
 略
 ## 嵌入
-未完
+改写 ~/catkin_ws/src/discontinuity-balance_strategy 中的 CMakeLists.txt:  
+```Bash
+project(dji_sdk_guidance)
+...
+add_executable(dji_sdk_node_guidance src/dji_sdk_node_guidance.cpp ${DJI_SDK_LIB_SOURCES})
+...
+target_link_libraries(dji_sdk_node_guidance ...)
+```
+改写 package.xml: 
+```Bash
+<name>dji_sdk_guidance</name>
+<description>The dji_sdk_guidance package</description>
+```
+
