@@ -55,7 +55,7 @@ Guidance 头文件对应的 cpp 文件）
 target_link_libraries(${PROJECT_NAME} djiosdk-core libDJI_guidance.so)
 ```
 重新编译 OSDK  
-## 2 Guidance-SDK-demo 嵌入到 Onboard-SDK-ROS
+## 2 Guidance-SDK-ROS-demo 嵌入到 Onboard-SDK-ROS
 前提：已经建好了 catkin_ws  
 ## 编译 Onboard-SDK-ROS
 同样将 App ID, Key 和串口 "ttyTHS1" 填入到 sdk.launch  
@@ -64,7 +64,7 @@ target_link_libraries(${PROJECT_NAME} djiosdk-core libDJI_guidance.so)
 cd catkin_ws
 catkin_make
 ```
-## 编译 Guidance-SDK-ROS
+## 编译 Guidance-SDK-ROS-demo
 略
 ## 嵌入
 未完
