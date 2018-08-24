@@ -28,6 +28,7 @@ cd OSDK-3.4
 mkdir build & cd build
 cmake..
 make # 编译所有例子
+sudo make install djiosdk-core
 # cp ../sample/linux/common/UserConfig.txt bin/
 cd bin
 ```
@@ -56,8 +57,8 @@ add_executable(${PROJECT_NAME} ${SOURCE_FILES} # 删除原来的
 Guidance 头文件对应的 cpp 文件）
 target_link_libraries(${PROJECT_NAME} djiosdk-core  
    ${PROJECT_SOURCE_DIR}/include/libDJI_guidance.so)
-# include 文件夹中的 libDJI_guidance.so 更换为 XU3 的 libDJI_guidance.so  
 ```
+# include 文件夹中的 libDJI_guidance.so 更换为 XU3 的 libDJI_guidance.so  
 ```Bash
 sudo cp libDJI_guidance.so /usr/local/lib # 或者复制到执行文件同一目录下
 ```
@@ -70,6 +71,8 @@ sudo cp libDJI_guidance.so /usr/local/lib # 或者复制到执行文件同一目
 ```Bash
 cd catkin_ws
 catkin_make
+roslaunch dji_sdk sdk.launch
+rosrun dji_sdk_demo demo_flight_control
 ```
 ## 编译 Guidance-SDK-ROS-demo
 略
