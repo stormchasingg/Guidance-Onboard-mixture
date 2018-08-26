@@ -58,7 +58,7 @@ Guidance 头文件对应的 cpp 文件）
 target_link_libraries(${PROJECT_NAME} djiosdk-core  
    ${PROJECT_SOURCE_DIR}/include/libDJI_guidance.so)
 ```
-# include 文件夹中的 libDJI_guidance.so 更换为 XU3 的 libDJI_guidance.so  
+include 文件夹中的 libDJI_guidance.so 更换为 XU3 的 libDJI_guidance.so  
 ```Bash
 sudo cp libDJI_guidance.so /usr/local/lib # 或者复制到执行文件同一目录下
 ```
@@ -90,4 +90,3 @@ target_link_libraries(dji_sdk_node_guidance ...)
 <name>dji_sdk_guidance</name>
 <description>The dji_sdk_guidance package</description>
 ```
-
