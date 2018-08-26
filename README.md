@@ -1,7 +1,7 @@
-# Guidance-Onboard-mixture (unfinished)
+# Guidance-Onboard-mixture (to be continued...)
 这份文档的内容需要硬件支持  
 功能：将 Guidance-SDK 嵌入到 Onboard-SDK, Guidance-SDK-ROS-demo 嵌入到 Onboard-SDK-ROS  
-(备选功能：将 Onboard-SDK 嵌入到 Guidance-SDK, Onboard-SDK-ROS 嵌入到 Guidance-SDK-ROS-demo)  
+(备选功能：将 Onboard-SDK 嵌入到 Guidance-SDK, Onboard-SDK-ROS 嵌入到 Guidance-SDK-ROS-demo 删除)  
 ## 硬件和环境准备
 1 DJI M100, Guidance (避障系统)  
 2 manifold (tk1), ubuntu-tegra (v14.04), CUDA, OpenCV4tegra, OpenCV-2.4.10, ros-indigo (opencv-2.4.8), cmake(>=2.8)  
