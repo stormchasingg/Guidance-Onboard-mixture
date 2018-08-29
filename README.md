@@ -90,3 +90,8 @@ target_link_libraries(dji_sdk_node_guidance ...)
 <name>dji_sdk_guidance</name>
 <description>The dji_sdk_guidance package</description>
 ```
+重新 catkin_make, 连接模拟器和硬件  
+```Bash
+roslaunch dji_sdk_guidance sdk_demo.launch
+rosrun dji_sdk_guidance dji_sdk_node_guidance
+```
