@@ -58,12 +58,12 @@ Guidance 头文件对应的 cpp 文件）
 target_link_libraries(${PROJECT_NAME} djiosdk-core  
    ${PROJECT_SOURCE_DIR}/include/libDJI_guidance.so)
 ```
-include 文件夹中的 libDJI_guidance.so 更换为 XU3 (arm?) 的 libDJI_guidance.so  
+include 文件夹中的 libDJI_guidance.so 更换为 XU3 的 libDJI_guidance.so  
 ```Bash
 sudo cp libDJI_guidance.so /usr/local/lib # 或者复制到执行文件同一目录下
 ```
 重新编译 OSDK  
-## 2 Guidance-SDK-ROS-demo 嵌入到 Onboard-SDK-ROS
+## 2 Guidance-SDK-ROS-demo 嵌入到 Onboard-SDK-ROS (待解决)
 前提：已经建好了 catkin_ws  
 ## 编译 Onboard-SDK-ROS
 同样将 App ID, Key 和串口 "ttyTHS1" 填入到 sdk.launch  
@@ -92,6 +92,6 @@ target_link_libraries(dji_sdk_node_guidance ...)
 ```
 重新 catkin_make, 连接模拟器和硬件  
 ```Bash
-roslaunch dji_sdk_guidance sdk_demo.launch
+roslaunch dji_sdk_guidance sdk_demo.launch # 此步报错
 rosrun dji_sdk_guidance dji_sdk_node_guidance
 ```
