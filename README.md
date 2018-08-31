@@ -96,3 +96,4 @@ target_link_libraries(dji_sdk_node_guidance ...)
 roslaunch dji_sdk_guidance sdk_demo.launch # 此步报错
 rosrun dji_sdk_guidance dji_sdk_node_guidance
 ```
+Stereo matching is on the way.  
