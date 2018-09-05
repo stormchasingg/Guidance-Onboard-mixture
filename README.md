@@ -1,7 +1,6 @@
-# Guidance-Onboard-mixture (to be continued...)
+# Guidance-Onboard-mixture
 这份文档的内容需要硬件支持  
 功能：将 Guidance-SDK 嵌入到 Onboard-SDK, Guidance-SDK-ROS-demo 嵌入到 Onboard-SDK-ROS  
-(备选功能：将 Onboard-SDK 嵌入到 Guidance-SDK, Onboard-SDK-ROS 嵌入到 Guidance-SDK-ROS-demo 删除)  
 ## 硬件和环境准备
 1 DJI M100, Guidance (避障系统)  
 2 manifold (tk1), ubuntu-tegra (v14.04), CUDA, OpenCV4tegra, OpenCV-2.4.10, ros-indigo (opencv-2.4.8), cmake(>=2.8)  
@@ -93,7 +92,7 @@ target_link_libraries(dji_sdk_node_guidance ...)
 ```
 重新 catkin_make, 连接模拟器和硬件  
 ```Bash
-roslaunch dji_sdk_guidance sdk_demo.launch # 此步报错
+roslaunch dji_sdk_guidance sdk_demo.launch # 此步报错（已解决）
 rosrun dji_sdk_guidance dji_sdk_node_guidance
 ```
 Stereo matching is on the way.  
