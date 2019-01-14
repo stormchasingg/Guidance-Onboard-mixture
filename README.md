@@ -1,9 +1,10 @@
 # Guidance-Onboard-mixture
 这份文档的内容需要硬件支持  
-功能：将 Guidance-SDK 嵌入到 Onboard-SDK, Guidance-SDK-ROS-demo 嵌入到 Onboard-SDK-ROS  
+功能1：将 Guidance-SDK 嵌入到 Onboard-SDK 
+功能2: Guidance-SDK-ROS-demo 嵌入到 Onboard-SDK-ROS-v3.2.2  
 ## 硬件和环境准备
 1 DJI M100, Guidance (避障系统)  
-2 manifold (tk1), ubuntu-tegra (v14.04), CUDA, OpenCV4tegra, OpenCV-2.4.10, ros-indigo (opencv-2.4.8), cmake(>=2.8)  
+2 manifold (tk1), ubuntu-tegra (v14.04), CUDA*, OpenCV4tegra*, OpenCV-2.4.10, ros-indigo (opencv-2.4.8), cmake(>=2.8)  
 3 windows-PC (e.g. win10), DJI-Asistant-2 (仿真), Guidance 调参软件  
 4 DJI GO App  
 ## 1 Guidance-SDK 嵌入到 Onboard-SDK (OSDK)
@@ -63,36 +64,26 @@ include 文件夹中的 libDJI_guidance.so 更换为 XU3 的 libDJI_guidance.so
 sudo cp libDJI_guidance.so /usr/local/lib # 或者复制到执行文件同一目录下
 ```
 重新编译 OSDK  
-## 2 Guidance-SDK-ROS-demo 嵌入到 Onboard-SDK-ROS (待解决)
+## 2 Guidance-SDK-ROS-demo 嵌入到 Onboard-SDK-ROS
 前提：已经建好了 catkin_ws  
-## 编译 Onboard-SDK-ROS
+## 编译 Onboard-SDK-ROS (把下面的命令改成3.2.2版本的)
 同样将 App ID, Key 和串口 "ttyTHS1" 填入到 sdk.launch  
 路径: ~/catkin_ws/src/Onboard-SDK-ROS/dji_sdk/launch/sdk.launch  
 ```Bash
 cd catkin_ws
 catkin_make
-roslaunch dji_sdk sdk.launch
-rosrun dji_sdk_demo demo_flight_control
+roslaunch dji_sdk sdk.launch  
+rosrun dji_sdk_demo demo_flight_control # 确认 Onboard-SDK-ROS 可以使用  
 ```
 ## 编译 Guidance-SDK-ROS-demo
-略
+在 ros 环境中不需要单独编译  
 ## 嵌入
-改写 ~/catkin_ws/src/discontinuity-balance_strategy 中的 CMakeLists.txt:  
+改写 ~/catkin_ws/src/discontinuity-balance_strategy 中的 CMakeLists.txt 和 package.xml (已上传)  
+重新 catkin_make, 连接模拟器和各个硬件  
 ```Bash
-project(dji_sdk_guidance)
-...
-add_executable(dji_sdk_node_guidance src/dji_sdk_node_guidance.cpp ${DJI_SDK_LIB_SOURCES})
-...
-target_link_libraries(dji_sdk_node_guidance ...)
+roslaunch dji_sdk_guidance sdk_demo.launch # 终端1  
+roslaunch dji_sdk sdk_manifold.launch  # 终端2  
+rosrun dji_sdk_guidance dji_sdk_node_guidance # 终端3  
 ```
-改写 package.xml: 
-```Bash
-<name>dji_sdk_guidance</name>
-<description>The dji_sdk_guidance package</description>
-```
-重新 catkin_make, 连接模拟器和硬件  
-```Bash
-roslaunch dji_sdk_guidance sdk_demo.launch # 此步报错（已解决）
-rosrun dji_sdk_guidance dji_sdk_node_guidance
-```
-Stereo matching is on the way.  
+虽然 Guidance 有深度图，但目测是只使用了 bm 立体匹配算法，其实可以自己合成深度图，比如使用 sgbm 算法获得更好的匹配效果.  
+其中双目摄像头标定需要的内外参数 Calibration files 已上传  
